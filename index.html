@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="LeadPredictor campaign forecast calculator" />
+    <title>LeadPredictor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="settings-panel" aria-label="Campaign settings">
+        <a class="brand" href="#top" aria-label="LeadPredictor home"><span class="brand-mark">⌄</span>Lead<span>Predictor</span></a>
+
+        <form id="forecast-form">
+          <div class="field">
+            <label for="language">Language</label>
+            <select id="language" name="language"><option>🇺🇸&nbsp; English</option><option>🇧🇬&nbsp; Bulgarian</option></select>
+          </div>
+          <div class="field">
+            <label for="currency">Currency</label>
+            <select id="currency" name="currency"><option value="USD">$&nbsp; US Dollar</option><option value="EUR">€&nbsp; Euro</option><option value="BGN">лв.&nbsp; Bulgarian Lev</option></select>
+          </div>
+          <div class="field"><label for="start-date">Campaign Start</label><input id="start-date" type="date" value="2026-05-08" /></div>
+          <div class="field"><label for="end-date">Campaign End</label><input id="end-date" type="date" value="2026-11-04" /></div>
+          <div class="field money-field"><label for="revenue">Total Revenue</label><span class="currency-sign">$</span><input id="revenue" type="number" min="0" step="100" value="10000" /></div>
+          <div class="field money-field"><label for="order-value">Avg. Order Value</label><span class="currency-sign">$</span><input id="order-value" type="number" min="1" step="10" value="1000" /></div>
+        </form>
+      </aside>
+
+      <section class="workspace" id="top">
+        <section class="forecast-card" aria-label="Campaign forecast">
+          <div class="chart-wrap">
+            <div class="chart-head"><span>Month</span><span>0 people</span><span>20 people</span><span>40 people</span><span>60 people</span><span>80 people</span><span>100 people</span><span>120 people</span></div>
+            <div id="bar-chart" class="bar-chart" aria-label="Monthly forecast chart"></div>
+          </div>
+          <section class="metric-list" aria-label="Forecast totals">
+            <article class="metric"><div class="metric-title"><span class="metric-icon">▰</span><strong>Prospects</strong><b id="prospect-percent">100%</b></div><output id="prospects">125</output><div class="progress"><i id="prospects-progress"></i></div></article>
+            <article class="metric"><div class="metric-title"><span class="metric-icon">●</span><strong>Leads</strong><b id="lead-percent">20%</b></div><output id="leads">25</output><div class="progress"><i id="leads-progress"></i></div></article>
+            <article class="metric"><div class="metric-title"><span class="metric-icon">♜</span><strong>Customers</strong><b id="customer-percent">8%</b></div><output id="customers">10</output><div class="progress"><i id="customers-progress"></i></div></article>
+          </section>
+        </section>
+
+        <section class="rates-card" aria-label="Response rate controls">
+          <div class="range-row"><label for="lead-rate">Lead Response Rate</label><input id="lead-rate" type="range" min="5" max="100" value="40" /><output id="lead-rate-value">40.00%</output></div>
+          <div class="range-row"><label for="prospect-rate">Prospect Response Rate</label><input id="prospect-rate" type="range" min="5" max="100" value="20" /><output id="prospect-rate-value">20.00%</output></div>
+        </section>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
