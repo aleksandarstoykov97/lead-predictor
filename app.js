@@ -11,6 +11,7 @@ const elements = {
   leadRateValue: document.querySelector('#lead-rate-value'), prospectRateValue: document.querySelector('#prospect-rate-value'),
 };
 const currencySigns = { USD: '$', EUR: '€', BGN: 'лв.' };
+const currencyLocales = { USD: 'en-US', EUR: 'de-DE', BGN: 'bg-BG' };
 
 function forecast() {
   const revenue = Math.max(0, Number(elements.revenue.value) || 0);
@@ -29,6 +30,11 @@ function forecast() {
   elements.leadRateValue.value = `${(leadRate * 100).toFixed(2)}%`; elements.prospectRateValue.value = `${(prospectRate * 100).toFixed(2)}%`;
   elements.chart.innerHTML = values.map((value, index) => `<div class="bar-row"><span class="month">${index + 1}</span><div class="bar" style="width:${(value / max) * 100}%" data-label="${value.toLocaleString()} prospects"></div></div>`).join('');
 }
-function updateCurrency() { document.querySelectorAll('.currency-sign').forEach((node) => { node.textContent = currencySigns[elements.currency.value]; }); }
+function updateCurrency() {
+  const sign = currencySigns[elements.currency.value];
+  document.querySelectorAll('.currency-sign').forEach((node) => { node.textContent = sign; });
+  [elements.revenue, elements.orderValue].forEach((input) => { input.setAttribute('aria-label', `${input.previousElementSibling.textContent} in ${elements.currency.options[elements.currency.selectedIndex].text.trim()}`); });
+  document.documentElement.lang = currencyLocales[elements.currency.value] === 'bg-BG' ? 'bg' : 'en';
+}
 elements.form.addEventListener('input', forecast); elements.leadRate.addEventListener('input', forecast); elements.prospectRate.addEventListener('input', forecast); elements.currency.addEventListener('change', updateCurrency);
 updateCurrency(); forecast();
