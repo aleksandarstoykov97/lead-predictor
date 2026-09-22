@@ -29,11 +29,16 @@ function forecast() {
   elements.prospectPercent.textContent = '100%'; elements.leadPercent.textContent = `${Math.round(leadRate * 100)}%`; elements.customerPercent.textContent = `${Math.round(prospectRate * 100)}%`;
   document.querySelector('#prospects-progress').style.width = '100%'; document.querySelector('#leads-progress').style.width = `${leadRate * 100}%`; document.querySelector('#customers-progress').style.width = `${prospectRate * 100}%`;
   elements.leadRateValue.value = `${(leadRate * 100).toFixed(2)}%`; elements.prospectRateValue.value = `${(prospectRate * 100).toFixed(2)}%`;
+  updateRangeFill(elements.leadRate); updateRangeFill(elements.prospectRate);
   elements.chart.innerHTML = values.map((value, index) => {
     const monthlyLeads = Math.round(value * leadRate);
     const monthlyCustomers = Math.round(monthlyLeads * prospectRate);
     return `<div class="bar-row"><span class="month">${index + 1}</span><div class="bar" tabindex="0" style="width:${(value / max) * 100}%"><span class="bar-tooltip"><strong>Month #${index + 1}</strong><span>Prospects: ${value.toLocaleString()}</span><span>Leads: ${monthlyLeads.toLocaleString()}</span><span>Customers: ${monthlyCustomers.toLocaleString()}</span></span></div></div>`;
   }).join('');
+}
+function updateRangeFill(range) {
+  const fill = (Number(range.value) / Number(range.max)) * 100;
+  range.style.background = `linear-gradient(to right, #d9e0ec 0%, #d9e0ec ${fill}%, #526177 ${fill}%, #526177 100%)`;
 }
 function updateCurrency() {
   const sign = currencySigns[elements.currency.value];
