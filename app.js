@@ -9,6 +9,7 @@ const elements = {
   prospects: document.querySelector('#prospects'), leads: document.querySelector('#leads'), customers: document.querySelector('#customers'),
   prospectPercent: document.querySelector('#prospect-percent'), leadPercent: document.querySelector('#lead-percent'), customerPercent: document.querySelector('#customer-percent'),
   leadRateValue: document.querySelector('#lead-rate-value'), prospectRateValue: document.querySelector('#prospect-rate-value'),
+  startDate: document.querySelector('#start-date'), endDate: document.querySelector('#end-date'), campaignLength: document.querySelector('#campaign-length'),
 };
 const currencySigns = { USD: '$', EUR: '€', BGN: 'лв.' };
 const currencyLocales = { USD: 'en-US', EUR: 'de-DE', BGN: 'bg-BG' };
@@ -36,5 +37,9 @@ function updateCurrency() {
   [elements.revenue, elements.orderValue].forEach((input) => { input.setAttribute('aria-label', `${input.previousElementSibling.textContent} in ${elements.currency.options[elements.currency.selectedIndex].text.trim()}`); });
   document.documentElement.lang = currencyLocales[elements.currency.value] === 'bg-BG' ? 'bg' : 'en';
 }
-elements.form.addEventListener('input', forecast); elements.leadRate.addEventListener('input', forecast); elements.prospectRate.addEventListener('input', forecast); elements.currency.addEventListener('change', updateCurrency);
-updateCurrency(); forecast();
+function updateCampaignLength() {
+  const days = Math.max(0, Math.round((new Date(elements.endDate.value) - new Date(elements.startDate.value)) / 86400000));
+  elements.campaignLength.textContent = `Campaign duration: ${days} day${days === 1 ? '' : 's'}`;
+}
+elements.form.addEventListener('input', () => { forecast(); updateCampaignLength(); }); elements.leadRate.addEventListener('input', forecast); elements.prospectRate.addEventListener('input', forecast); elements.currency.addEventListener('change', updateCurrency);
+updateCurrency(); updateCampaignLength(); forecast();
