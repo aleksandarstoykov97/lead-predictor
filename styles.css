@@ -3,8 +3,8 @@
 body { min-width: 320px; margin: 0; min-height: 100vh; background: radial-gradient(circle at 72% 2%, #26364a 0, transparent 37%), #121e2e; }
 .app-shell { display: grid; grid-template-columns: 344px minmax(0, 1fr); gap: 24px; min-height: 100vh; padding: 32px 16px 16px 8px; }
 .settings-panel, .forecast-card, .rates-card { border: 1px solid #26364a; border-radius: 20px; background: rgba(24, 37, 55, .76); box-shadow: 0 10px 25px rgba(2, 8, 18, .12); }
-.settings-panel { padding: 0 28px 28px; }
-.brand { display: inline-flex; align-items: center; gap: 7px; margin: 1px 0 25px; color: #d7dee8; font-size: clamp(26px, 3vw, 38px); font-weight: 800; letter-spacing: -.04em; text-decoration: none; }
+.settings-panel { padding: 28px; }
+.brand { display: inline-flex; align-items: center; gap: 7px; margin: 1px 0 25px 3px; color: #d7dee8; font-size: clamp(26px, 3vw, 38px); font-weight: 800; letter-spacing: -.04em; text-decoration: none; }
 .brand span:last-child { font-weight: 400; }.brand-mark { display: grid; width: 41px; height: 41px; place-items: center; border-radius: 8px; background: #d6deea; color: #546478; }.brand-mark svg { width: 29px; height: 29px; fill: currentColor; }
 .field { position: relative; margin-bottom: 26px; }.field label, .range-row label { display: block; margin-bottom: 9px; color: #d2d8e1; font-size: 15px; font-weight: 700; }
 .campaign-length { margin: -13px 0 26px; color: #9eacc0; font-size: 13px; font-weight: 600; }

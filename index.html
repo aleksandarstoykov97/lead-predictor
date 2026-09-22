@@ -9,9 +9,9 @@
   </head>
   <body>
     <main class="app-shell">
-      <aside class="settings-panel" aria-label="Campaign settings">
+      <aside class="sidebar">
         <a class="brand" href="#top" aria-label="LeadPredictor home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5c0 .6-.22 1.18-.62 1.63L15 13.2v4.55a1 1 0 0 1-.54.89l-3 1.5A1 1 0 0 1 10 19.25V13.2L4.62 7.13A2.45 2.45 0 0 1 3 5.5Z"/></svg></span>Lead<span>Predictor</span></a>
-
+        <section class="settings-panel" aria-label="Campaign settings">
         <form id="forecast-form">
           <div class="field">
             <label for="language">Language</label>
@@ -27,6 +27,7 @@
           <div class="field money-field"><label for="revenue">Total Revenue</label><span class="currency-sign">$</span><input id="revenue" type="number" min="0" step="100" value="10000" /></div>
           <div class="field money-field"><label for="order-value">Avg. Order Value</label><span class="currency-sign">$</span><input id="order-value" type="number" min="1" step="10" value="1000" /></div>
         </form>
+        </section>
       </aside>
 
       <section class="workspace" id="top">
