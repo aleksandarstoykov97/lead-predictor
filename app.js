@@ -37,7 +37,7 @@ function forecast() {
   }).join('');
 }
 function updateRangeFill(range) {
-  const fill = (Number(range.value) / Number(range.max)) * 100;
+  const fill = ((Number(range.value) - Number(range.min)) / (Number(range.max) - Number(range.min))) * 100;
   range.style.background = `linear-gradient(to right, #d9e0ec 0%, #d9e0ec ${fill}%, #526177 ${fill}%, #526177 100%)`;
 }
 function updateCurrency() {
