@@ -34,8 +34,8 @@
         <section class="forecast-card" aria-label="Campaign forecast">
           <div class="chart-wrap">
             <div class="chart-title"><h1>Campaign forecast</h1><p>Hover a bar to view the projected prospects.</p></div>
-            <div class="chart-head"><span>Month</span><span>0 people</span><span>20 people</span><span>40 people</span><span>60 people</span><span>80 people</span><span>100 people</span><span>120 people</span></div>
-            <div id="bar-chart" class="bar-chart" aria-label="Monthly forecast chart"></div>
+            <div class="chart-plot"><span class="axis-title">Month</span><div id="bar-chart" class="bar-chart" aria-label="Monthly forecast chart"></div></div>
+            <div class="chart-head" aria-hidden="true"><span>0 people</span><span>20 people</span><span>40 people</span><span>60 people</span><span>80 people</span><span>100 people</span><span>120 people</span></div>
           </div>
           <section class="metric-list" aria-label="Forecast totals">
             <article class="metric"><div class="metric-title"><span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H10l2 2.2h6.5A2.5 2.5 0 0 1 21 9.7v7.8a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5v-10Z"/><path d="M3 9h18" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><strong>Prospects</strong><b id="prospect-percent">100%</b></div><output id="prospects" aria-live="polite">125</output><div class="progress" role="progressbar" aria-label="Prospects"><i id="prospects-progress"></i></div></article>
