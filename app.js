@@ -19,20 +19,21 @@ function forecast() {
   const orderValue = Math.max(1, Number(elements.orderValue.value) || 1);
   const leadRate = Number(elements.leadRate.value) / 100;
   const prospectRate = Number(elements.prospectRate.value) / 100;
-  const customers = Math.round(revenue / orderValue);
-  const leads = Math.max(customers, Math.round(customers / prospectRate));
-  const prospects = Math.max(leads, Math.round(leads / leadRate));
-  const values = [0.16, 0.34, 0.46, 0.67, 0.85, 1].map((share, index) => Math.max(1, Math.round(prospects * share)));
+  const customers = Math.ceil(revenue / orderValue);
+  const leads = Math.ceil(customers / leadRate);
+  const prospects = Math.ceil(leads / prospectRate);
+  const customerRate = leadRate * prospectRate;
+  const values = [0.16, 0.34, 0.46, 0.67, 0.85, 1].map((share) => Math.max(1, Math.ceil(prospects * share)));
   const max = Math.max(...values);
 
   elements.prospects.value = prospects.toLocaleString(); elements.leads.value = leads.toLocaleString(); elements.customers.value = customers.toLocaleString();
-  elements.prospectPercent.textContent = '100%'; elements.leadPercent.textContent = `${Math.round(leadRate * 100)}%`; elements.customerPercent.textContent = `${Math.round(prospectRate * 100)}%`;
-  document.querySelector('#prospects-progress').style.width = '100%'; document.querySelector('#leads-progress').style.width = `${leadRate * 100}%`; document.querySelector('#customers-progress').style.width = `${prospectRate * 100}%`;
+  elements.prospectPercent.textContent = '100%'; elements.leadPercent.textContent = `${Math.round(prospectRate * 100)}%`; elements.customerPercent.textContent = `${Math.round(customerRate * 100)}%`;
+  document.querySelector('#prospects-progress').style.width = '100%'; document.querySelector('#leads-progress').style.width = `${prospectRate * 100}%`; document.querySelector('#customers-progress').style.width = `${customerRate * 100}%`;
   elements.leadRateValue.value = `${(leadRate * 100).toFixed(2)}%`; elements.prospectRateValue.value = `${(prospectRate * 100).toFixed(2)}%`;
   updateRangeFill(elements.leadRate); updateRangeFill(elements.prospectRate);
   elements.chart.innerHTML = values.map((value, index) => {
-    const monthlyLeads = Math.round(value * leadRate);
-    const monthlyCustomers = Math.round(monthlyLeads * prospectRate);
+    const monthlyLeads = Math.ceil(value * prospectRate);
+    const monthlyCustomers = Math.ceil(monthlyLeads * leadRate);
     return `<div class="bar-row"><span class="month">${index + 1}</span><div class="bar" tabindex="0" style="width:${(value / max) * 100}%"><span class="bar-tooltip"><strong>Month #${index + 1}</strong><span>Prospects: ${value.toLocaleString()}</span><span>Leads: ${monthlyLeads.toLocaleString()}</span><span>Customers: ${monthlyCustomers.toLocaleString()}</span></span></div></div>`;
   }).join('');
 }
