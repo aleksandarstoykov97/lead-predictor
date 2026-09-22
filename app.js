@@ -41,5 +41,7 @@ function updateCampaignLength() {
   const days = Math.max(0, Math.round((new Date(elements.endDate.value) - new Date(elements.startDate.value)) / 86400000));
   elements.campaignLength.textContent = `Campaign duration: ${days} day${days === 1 ? '' : 's'}`;
 }
-elements.form.addEventListener('input', () => { forecast(); updateCampaignLength(); }); elements.leadRate.addEventListener('input', forecast); elements.prospectRate.addEventListener('input', forecast); elements.currency.addEventListener('change', updateCurrency);
+elements.form.addEventListener('input', () => { forecast(); updateCampaignLength(); });
+elements.form.addEventListener('reset', () => setTimeout(() => { updateCurrency(); updateCampaignLength(); forecast(); }));
+elements.leadRate.addEventListener('input', forecast); elements.prospectRate.addEventListener('input', forecast); elements.currency.addEventListener('change', updateCurrency);
 updateCurrency(); updateCampaignLength(); forecast();
