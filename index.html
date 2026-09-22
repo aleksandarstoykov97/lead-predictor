@@ -10,7 +10,7 @@
   <body>
     <main class="app-shell">
       <aside class="settings-panel" aria-label="Campaign settings">
-        <a class="brand" href="#top" aria-label="LeadPredictor home"><span class="brand-mark">⌄</span>Lead<span>Predictor</span></a>
+        <a class="brand" href="#top" aria-label="LeadPredictor home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5c0 .6-.22 1.18-.62 1.63L15 13.2v4.55a1 1 0 0 1-.54.89l-3 1.5A1 1 0 0 1 10 19.25V13.2L4.62 7.13A2.45 2.45 0 0 1 3 5.5Z"/></svg></span>Lead<span>Predictor</span></a>
 
         <form id="forecast-form">
           <div class="field">
@@ -38,9 +38,9 @@
             <div id="bar-chart" class="bar-chart" aria-label="Monthly forecast chart"></div>
           </div>
           <section class="metric-list" aria-label="Forecast totals">
-            <article class="metric"><div class="metric-title"><span class="metric-icon" aria-hidden="true">▰</span><strong>Prospects</strong><b id="prospect-percent">100%</b></div><output id="prospects" aria-live="polite">125</output><div class="progress" role="progressbar" aria-label="Prospects"><i id="prospects-progress"></i></div></article>
-            <article class="metric"><div class="metric-title"><span class="metric-icon" aria-hidden="true">●</span><strong>Leads</strong><b id="lead-percent">20%</b></div><output id="leads" aria-live="polite">25</output><div class="progress" role="progressbar" aria-label="Leads"><i id="leads-progress"></i></div></article>
-            <article class="metric"><div class="metric-title"><span class="metric-icon" aria-hidden="true">♜</span><strong>Customers</strong><b id="customer-percent">8%</b></div><output id="customers" aria-live="polite">10</output><div class="progress" role="progressbar" aria-label="Customers"><i id="customers-progress"></i></div></article>
+            <article class="metric"><div class="metric-title"><span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H10l2 2.2h6.5A2.5 2.5 0 0 1 21 9.7v7.8a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5v-10Z"/><path d="M3 9h18" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><strong>Prospects</strong><b id="prospect-percent">100%</b></div><output id="prospects" aria-live="polite">125</output><div class="progress" role="progressbar" aria-label="Prospects"><i id="prospects-progress"></i></div></article>
+            <article class="metric"><div class="metric-title"><span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0Z"/></svg></span><strong>Leads</strong><b id="lead-percent">20%</b></div><output id="leads" aria-live="polite">25</output><div class="progress" role="progressbar" aria-label="Leads"><i id="leads-progress"></i></div></article>
+            <article class="metric"><div class="metric-title"><span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4h12v5.5A6 6 0 0 1 13 15.4V18h3v2H8v-2h3v-2.6A6 6 0 0 1 6 9.5Z"/><path d="M6 6H3v1.5A4.5 4.5 0 0 0 7 12M18 6h3v1.5a4.5 4.5 0 0 1-4 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><strong>Customers</strong><b id="customer-percent">8%</b></div><output id="customers" aria-live="polite">10</output><div class="progress" role="progressbar" aria-label="Customers"><i id="customers-progress"></i></div></article>
           </section>
         </section>
 
